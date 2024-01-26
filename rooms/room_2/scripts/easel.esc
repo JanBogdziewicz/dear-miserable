@@ -1,0 +1,14 @@
+:look
+
+> [!easel_visited]
+    say player "Oh? You still didn’t give up? Maybe you should already. Surprise me and make something ACCEPTABLE this time."
+    custom method_caller Node decrease_hp ""
+    set_global easel_visited true
+    inc_global number_visited 1
+
+> [eq number_visited 8]
+    block_say
+        say player "......."
+        say player "I'm tired... I think I'll go to bed"
+    end_block_say
+    set_active night true

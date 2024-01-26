@@ -1,0 +1,8 @@
+:init
+
+show_menu main
+
+:newgame
+
+set_global day 0
+change_scene res://rooms/exit_game/exit_game.tscn

@@ -1,0 +1,26 @@
+:setup
+
+custom method_caller Node set_hp_visible false
+
+:ready
+> [eq day 0]
+    wait 1
+    change_scene res://rooms/room_0/room_0.tscn
+
+> [eq day 1]
+    # change to room_2
+    wait 1
+    print wlaczam_dzien_2
+    change_scene res://rooms/room_2/room_2.tscn
+
+> [eq day 2]
+    # change to room_3
+    wait 1
+    change_scene res://rooms/room_3/room_3.tscn
+
+> [eq day 3]
+    # change to room_4
+    wait 1
+    change_scene res://rooms/room_4/room_4.tscn
+
+

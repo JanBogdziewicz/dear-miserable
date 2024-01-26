@@ -1,0 +1,11 @@
+:look
+
+> [!bin_visited]
+    say player "You have no energy to do that, maybe tomorrow."
+    set_global bin_visited true
+    inc_global number_visited 1
+
+> [eq number_visited 8]
+    say player "......."
+    say player "I'm tired... I think I'll go to bed"
+    set_active night true

@@ -1,0 +1,64 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://DialogBox.gd" type="Script" id=1]
+[ext_resource path="res://addons/escoria-core/game/core-scripts/esc_item.gd" type="Script" id=2]
+[ext_resource path="res://PixeloidSans-mLxMm.ttf" type="DynamicFontData" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+size = 32
+font_data = ExtResource( 3 )
+
+[node name="Control" type="Area2D"]
+pause_mode = 1
+script = ExtResource( 2 )
+global_id = "custom_dialog"
+esc_script = ""
+is_exit = false
+is_trigger = false
+trigger_in_verb = "trigger_in"
+trigger_out_verb = "trigger_out"
+is_interactive = true
+is_movable = false
+player_orients_on_arrival = true
+interaction_angle = 0
+tooltip_name = ""
+default_action = ""
+default_action_inventory = ""
+combine_when_selected_action_is_in = [  ]
+combine_is_one_way = false
+use_from_inventory_only = false
+inventory_texture = null
+dialog_color = Color( 1, 1, 1, 1 )
+dont_apply_terrain_scaling = false
+speed = 300
+v_speed_damp = 1.0
+animation_player_node = NodePath("")
+camera_node = NodePath("")
+custom_data = {
+}
+animations = null
+
+[node name="DialogBox" type="ColorRect" parent="."]
+margin_right = 739.0
+margin_bottom = 165.0
+color = Color( 0.223529, 0.223529, 0.223529, 1 )
+script = ExtResource( 1 )
+
+[node name="Text" type="RichTextLabel" parent="DialogBox"]
+margin_left = 21.0
+margin_top = 18.0
+margin_right = 493.0
+margin_bottom = 120.0
+custom_fonts/mono_font = SubResource( 1 )
+custom_fonts/normal_font = SubResource( 1 )
+text = "SIEMA"
+
+[node name="Indicator" type="Polygon2D" parent="DialogBox"]
+position = Vector2( 406, 72 )
+scale = Vector2( 0.642858, 0.521433 )
+polygon = PoolVector2Array( 466, 125, 494, 125, 480, 155 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="DialogBox/Indicator"]
+
+[node name="Timer" type="Timer" parent="DialogBox"]
+one_shot = true

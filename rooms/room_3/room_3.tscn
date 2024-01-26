@@ -1,0 +1,250 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://addons/escoria-core/game/core-scripts/esc_room.gd" type="Script" id=1]
+[ext_resource path="res://addons/escoria-core/game/core-scripts/esc_location.gd" type="Script" id=2]
+[ext_resource path="res://addons/escoria-core/game/core-scripts/esc_background.gd" type="Script" id=3]
+[ext_resource path="res://addons/escoria-core/game/core-scripts/esc_terrain.gd" type="Script" id=4]
+[ext_resource path="res://characters/player/player.tscn" type="PackedScene" id=5]
+[ext_resource path="res://rooms/room_1/room_night.jpg" type="Texture" id=6]
+[ext_resource path="res://addons/escoria-core/game/core-scripts/esc_item.gd" type="Script" id=7]
+[ext_resource path="res://rooms/room_3/room_3.jpg" type="Texture" id=8]
+[ext_resource path="res://rooms/room_0/method_caller.gd" type="Script" id=9]
+[ext_resource path="res://rooms/room_1/room_night_to.jpg" type="Texture" id=10]
+
+[sub_resource type="NavigationPolygon" id=1]
+vertices = PoolVector2Array( 3874, 538, 3928, 535, 3928, 1033, 1234.23, 590.09, 1442.94, 591.592, 1442, 623, 601, 1019, 603.604, 783.784, 909.91, 785.285, 911.411, 534.534, 938.438, 534.534, 939.94, 582.583, 1489.49, 647.147, 1604, 639, 1605.1, 560.06, 1735.74, 558.559, 1947.45, 567.568, 1160.66, 537.538, 1230, 538, 1153.15, 587.087, 3736, 528, 3710.21, 588.589, 2841, 565, 2851, 532, 2902, 535, 2932, 575, 2986, 579, 3009.01, 519.519, 3061.56, 519.519, 3088.59, 552.553, 3540.54, 590.09, 3283.78, 539.039, 3507, 538, 2656.16, 608.108, 2680.18, 570.571, 2345.35, 569.069, 2510.51, 566.066, 2542.04, 605.105, 1752, 538, 1916, 535, 3243.24, 552.553, 2070.57, 566.066, 2180.18, 567.568 )
+polygons = [ PoolIntArray( 0, 1, 2 ), PoolIntArray( 3, 4, 5 ), PoolIntArray( 2, 6, 7, 8 ), PoolIntArray( 8, 9, 10, 11 ), PoolIntArray( 2, 8, 11, 12 ), PoolIntArray( 13, 14, 15, 16 ), PoolIntArray( 17, 18, 3, 19 ), PoolIntArray( 20, 0, 2, 21 ), PoolIntArray( 22, 23, 24, 25 ), PoolIntArray( 26, 27, 28, 29 ), PoolIntArray( 30, 21, 2 ), PoolIntArray( 31, 32, 30 ), PoolIntArray( 33, 34, 22, 25, 2 ), PoolIntArray( 35, 36, 37 ), PoolIntArray( 15, 38, 39, 16 ), PoolIntArray( 31, 30, 2, 40 ), PoolIntArray( 29, 40, 2, 26 ), PoolIntArray( 25, 26, 2 ), PoolIntArray( 19, 3, 5, 12, 11 ), PoolIntArray( 37, 33, 2 ), PoolIntArray( 2, 13, 16, 41, 42, 37 ), PoolIntArray( 42, 35, 37 ), PoolIntArray( 12, 13, 2 ) ]
+outlines = [ PoolVector2Array( 911.411, 534.534, 938.438, 534.534, 939.94, 582.583, 1153.15, 587.087, 1160.66, 537.538, 1230, 538, 1234.23, 590.09, 1442.94, 591.592, 1442, 623, 1489.49, 647.147, 1604, 639, 1605.1, 560.06, 1735.74, 558.559, 1752, 538, 1916, 535, 1947.45, 567.568, 2070.57, 566.066, 2180.18, 567.568, 2345.35, 569.069, 2510.51, 566.066, 2542.04, 605.105, 2656.16, 608.108, 2680.18, 570.571, 2841, 565, 2851, 532, 2902, 535, 2932, 575, 2986, 579, 3009.01, 519.519, 3061.56, 519.519, 3088.59, 552.553, 3243.24, 552.553, 3283.78, 539.039, 3507, 538, 3540.54, 590.09, 3710.21, 588.589, 3736, 528, 3874, 538, 3928, 535, 3928, 1033, 601, 1019, 603.604, 783.784, 909.91, 785.285 ) ]
+
+[node name="ESCRoom" type="Node2D"]
+script = ExtResource( 1 )
+global_id = "room_1"
+esc_script = "res://rooms/room_3/load.esc"
+player_scene = ExtResource( 5 )
+camera_limits = [ Rect2( 0, 0, 2228, 718 ) ]
+
+[node name="ESCBackground" type="TextureRect" parent="."]
+margin_right = 2234.0
+margin_bottom = 720.0
+mouse_filter = 2
+texture = ExtResource( 8 )
+expand = true
+script = ExtResource( 3 )
+
+[node name="method_caller" type="Area2D" parent="."]
+pause_mode = 1
+visible = false
+script = ExtResource( 7 )
+global_id = "method_caller"
+combine_when_selected_action_is_in = [  ]
+animations = null
+
+[node name="Node" type="Node" parent="method_caller"]
+script = ExtResource( 9 )
+
+[node name="night" type="Area2D" parent="."]
+pause_mode = 1
+script = ExtResource( 7 )
+global_id = "night"
+default_action = "look"
+combine_when_selected_action_is_in = [  ]
+inventory_texture = ExtResource( 6 )
+animations = null
+
+[node name="Sprite" type="Sprite" parent="night"]
+position = Vector2( 1117, 360 )
+scale = Vector2( 0.726, 0.726 )
+texture = ExtResource( 6 )
+
+[node name="night_in_bed" type="Area2D" parent="."]
+pause_mode = 1
+script = ExtResource( 7 )
+global_id = "night_in_bed"
+default_action = "look"
+combine_when_selected_action_is_in = [  ]
+inventory_texture = ExtResource( 6 )
+animations = null
+
+[node name="Sprite" type="Sprite" parent="night_in_bed"]
+position = Vector2( 1117, 360 )
+scale = Vector2( 0.726, 0.726 )
+texture = ExtResource( 10 )
+
+[node name="ESCTerrain" type="Navigation2D" parent="."]
+script = ExtResource( 4 )
+
+[node name="NavigationPolygonInstance" type="NavigationPolygonInstance" parent="ESCTerrain"]
+position = Vector2( -400, 25 )
+scale = Vector2( 0.67, 0.67 )
+navpoly = SubResource( 1 )
+
+[node name="start" type="Position2D" parent="."]
+position = Vector2( 213, 497 )
+script = ExtResource( 2 )
+global_id = "start_location"
+is_start_location = true
+
+[node name="computer" type="Area2D" parent="."]
+pause_mode = 1
+script = ExtResource( 7 )
+global_id = "computer_3"
+esc_script = "res://rooms/room_3/scripts/computer.esc"
+default_action = "look"
+combine_when_selected_action_is_in = [  ]
+animations = null
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="computer"]
+polygon = PoolVector2Array( 426, 239, 614, 238, 614, 421, 427, 421 )
+
+[node name="interact_position" type="Position2D" parent="computer"]
+position = Vector2( 511, 424 )
+script = ExtResource( 2 )
+global_id = "computer_int_position"
+
+[node name="fridge" type="Area2D" parent="."]
+pause_mode = 1
+script = ExtResource( 7 )
+global_id = "fridge_3"
+esc_script = "res://rooms/room_3/scripts/fridge.esc"
+default_action = "look"
+combine_when_selected_action_is_in = [  ]
+animations = null
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="fridge"]
+position = Vector2( 648, -24 )
+polygon = PoolVector2Array( 426, 239, 521, 240, 520, 429, 428, 429 )
+
+[node name="interact_position" type="Position2D" parent="fridge"]
+position = Vector2( 1119, 410 )
+script = ExtResource( 2 )
+global_id = "fridge_int_position"
+
+[node name="brush" type="Area2D" parent="."]
+pause_mode = 1
+script = ExtResource( 7 )
+global_id = "brush_3"
+esc_script = "res://rooms/room_3/scripts/brush.esc"
+default_action = "look"
+combine_when_selected_action_is_in = [  ]
+animations = null
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="brush"]
+position = Vector2( 1102, 85 )
+polygon = PoolVector2Array( 503, 287, 564, 288, 563, 348, 501, 347 )
+
+[node name="interact_position" type="Position2D" parent="brush"]
+position = Vector2( 1594, 439 )
+script = ExtResource( 2 )
+global_id = "brush_int_position"
+
+[node name="bookshelf" type="Area2D" parent="."]
+pause_mode = 1
+script = ExtResource( 7 )
+global_id = "bookshelf_3"
+esc_script = "res://rooms/room_3/scripts/bookshelf.esc"
+interaction_angle = 181
+default_action = "look"
+combine_when_selected_action_is_in = [  ]
+animations = null
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="bookshelf"]
+position = Vector2( -184, -50 )
+polygon = PoolVector2Array( 426, 239, 554, 243, 559, 467, 424, 465 )
+
+[node name="interact_position" type="Position2D" parent="bookshelf"]
+position = Vector2( 353, 449 )
+script = ExtResource( 2 )
+global_id = "bookshelf_int_position"
+
+[node name="bin" type="Area2D" parent="."]
+pause_mode = 1
+script = ExtResource( 7 )
+global_id = "bin_3"
+esc_script = "res://rooms/room_3/scripts/bin.esc"
+default_action = "look"
+combine_when_selected_action_is_in = [  ]
+animations = null
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="bin"]
+position = Vector2( 498, 17 )
+polygon = PoolVector2Array( 494, 274, 556, 274, 555, 380, 496, 381 )
+
+[node name="interact_position" type="Position2D" parent="bin"]
+position = Vector2( 1013, 417 )
+script = ExtResource( 2 )
+global_id = "bin_int_position"
+
+[node name="easel" type="Area2D" parent="."]
+pause_mode = 1
+script = ExtResource( 7 )
+global_id = "easel_3"
+esc_script = "res://rooms/room_3/scripts/easel.esc"
+interaction_angle = 181
+default_action = "look"
+combine_when_selected_action_is_in = [  ]
+animations = null
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="easel"]
+position = Vector2( 1480, -78 )
+polygon = PoolVector2Array( 491, 415, 492, 315, 519, 315, 537, 267, 557, 314, 585, 316, 583, 412, 580, 427, 595, 494, 484, 494, 499, 429 )
+
+[node name="interact_position" type="Position2D" parent="easel"]
+position = Vector2( 2067, 432 )
+script = ExtResource( 2 )
+global_id = "easel_int_position"
+
+[node name="vibrator" type="Area2D" parent="."]
+pause_mode = 1
+script = ExtResource( 7 )
+global_id = "vibrator_3"
+esc_script = "res://rooms/room_3/scripts/vibrator.esc"
+default_action = "look"
+combine_when_selected_action_is_in = [  ]
+animations = null
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="vibrator"]
+position = Vector2( 766, 77 )
+polygon = PoolVector2Array( 525, 298, 601, 313, 604, 353, 523, 338 )
+
+[node name="interact_position" type="Position2D" parent="vibrator"]
+position = Vector2( 1301, 446 )
+script = ExtResource( 2 )
+global_id = "vibrator_int_position"
+
+[node name="shower" type="Area2D" parent="."]
+pause_mode = 1
+script = ExtResource( 7 )
+global_id = "shower_3"
+esc_script = "res://rooms/room_3/scripts/shower.esc"
+interaction_angle = 181
+default_action = "look"
+combine_when_selected_action_is_in = [  ]
+animations = null
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="shower"]
+position = Vector2( 902, -73 )
+polygon = PoolVector2Array( 474, 284, 582, 284, 585, 485, 475, 485 )
+
+[node name="interact_position" type="Position2D" parent="shower"]
+position = Vector2( 1465, 419 )
+script = ExtResource( 2 )
+global_id = "shower_int_position"
+
+[node name="bed" type="Area2D" parent="."]
+pause_mode = 1
+script = ExtResource( 7 )
+global_id = "bed_3"
+esc_script = "res://rooms/room_3/scripts/bed.esc"
+interaction_angle = 181
+default_action = "look"
+combine_when_selected_action_is_in = [  ]
+animations = null
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="bed"]
+position = Vector2( -417, 46 )
+polygon = PoolVector2Array( 439, 245, 609, 245, 610, 495, 441, 495 )
+
+[node name="interact_position" type="Position2D" parent="bed"]
+position = Vector2( 213, 492 )
+script = ExtResource( 2 )
+global_id = "bed_int_position"

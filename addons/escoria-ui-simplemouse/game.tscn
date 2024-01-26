@@ -1,0 +1,76 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://addons/escoria-core/game/scenes/dialogs/esc_dialog_player.gd" type="Script" id=2]
+[ext_resource path="res://addons/escoria-core/game/scenes/camera_player/camera.tscn" type="PackedScene" id=3]
+[ext_resource path="res://addons/escoria-ui-simplemouse/verbs_mouseicons.tscn" type="PackedScene" id=4]
+[ext_resource path="res://addons/escoria-ui-simplemouse/game.gd" type="Script" id=5]
+[ext_resource path="res://addons/escoria-ui-simplemouse/tooltip/target_tooltip.tscn" type="PackedScene" id=6]
+[ext_resource path="res://addons/escoria-core/ui_library/menus/main_menu/main_menu.tscn" type="PackedScene" id=7]
+[ext_resource path="res://addons/escoria-core/ui_library/menus/pause_menu/pause_menu.tscn" type="PackedScene" id=8]
+[ext_resource path="res://addons/escoria-ui-simplemouse/theme.tres" type="Theme" id=9]
+[ext_resource path="res://items/HP.tscn" type="PackedScene" id=11]
+
+[node name="game" type="Node2D"]
+script = ExtResource( 5 )
+main_menu = NodePath("CanvasLayer/main_menu")
+pause_menu = NodePath("CanvasLayer/pause_menu")
+editor_debug_mode = 1
+ui_parent_control_node = NodePath("CanvasLayer/ui")
+
+[node name="camera" parent="." instance=ExtResource( 3 )]
+
+[node name="dialog_layer" type="CanvasLayer" parent="."]
+layer = 3
+
+[node name="ESCDialogsPlayer" type="Control" parent="dialog_layer"]
+theme = ExtResource( 9 )
+script = ExtResource( 2 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ui" type="Control" parent="CanvasLayer"]
+anchor_top = 0.9
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource( 9 )
+
+[node name="HP" parent="CanvasLayer/ui" instance=ExtResource( 11 )]
+margin_left = 987.0
+margin_top = -25.0
+margin_right = 987.0
+margin_bottom = -25.0
+rect_scale = Vector2( 0.52, 0.52 )
+
+[node name="pause_menu" parent="CanvasLayer" instance=ExtResource( 8 )]
+visible = false
+theme = ExtResource( 9 )
+
+[node name="main_menu" parent="CanvasLayer" instance=ExtResource( 7 )]
+visible = false
+
+[node name="tooltip_layer" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="tooltip" parent="tooltip_layer" instance=ExtResource( 6 )]
+mouse_filter = 2
+theme = ExtResource( 9 )
+bbcode_text = "[center][color=#000000][/color][/center]"
+fit_content_height = true
+
+[node name="mouse_layer" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="verbs_menu" parent="mouse_layer" instance=ExtResource( 4 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 156.0
+margin_top = 810.0
+margin_right = 156.0
+margin_bottom = 900.0
+grow_horizontal = 0
+size_flags_horizontal = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 3.0

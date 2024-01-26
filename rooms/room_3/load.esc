@@ -1,0 +1,18 @@
+:setup
+set_active night false
+set_active night_in_bed false
+custom method_caller Node set_hp_visible true
+
+:ready
+inc_global day 1
+set_global number_visited 0
+
+set_global computer_visited false
+set_global fridge_visited false
+set_global brush_visited false
+set_global bookshelf_visited false
+set_global bin_visited false
+set_global easel_visited false
+set_global vibrator_visited false
+set_global shower_visited false
+

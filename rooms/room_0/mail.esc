@@ -1,0 +1,5 @@
+:look
+
+set_active mail_window false
+custom method_caller Node set_player_visible true
+change_scene res://rooms/room_1/room_1.tscn

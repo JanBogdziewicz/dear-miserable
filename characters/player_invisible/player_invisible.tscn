@@ -1,0 +1,99 @@
+[gd_scene load_steps=20 format=2]
+
+[ext_resource path="res://addons/escoria-core/game/core-scripts/esc_dialog_location.gd" type="Script" id=1]
+[ext_resource path="res://addons/escoria-core/game/core-scripts/esc_player.gd" type="Script" id=2]
+[ext_resource path="res://addons/escoria-core/game/core-scripts/resources/esc_directionangle.gd" type="Script" id=3]
+[ext_resource path="res://addons/escoria-core/game/core-scripts/resources/esc_animationresource.gd" type="Script" id=4]
+[ext_resource path="res://characters/player/to.png" type="Texture" id=5]
+[ext_resource path="res://characters/player/to2.png" type="Texture" id=6]
+[ext_resource path="res://characters/player/to1.png" type="Texture" id=7]
+[ext_resource path="res://addons/escoria-core/game/core-scripts/resources/esc_animationname.gd" type="Script" id=8]
+
+[sub_resource type="Resource" id=1]
+script = ExtResource( 3 )
+angle_start = 0
+angle_size = 180
+
+[sub_resource type="Resource" id=2]
+script = ExtResource( 3 )
+angle_start = 180
+angle_size = 180
+
+[sub_resource type="Resource" id=3]
+script = ExtResource( 8 )
+animation = "walk"
+mirrored = false
+
+[sub_resource type="Resource" id=4]
+script = ExtResource( 8 )
+animation = "walk"
+mirrored = true
+
+[sub_resource type="Resource" id=5]
+script = ExtResource( 8 )
+animation = "idle"
+mirrored = false
+
+[sub_resource type="Resource" id=6]
+script = ExtResource( 8 )
+animation = "idle"
+mirrored = true
+
+[sub_resource type="Resource" id=10]
+script = ExtResource( 8 )
+animation = "idle"
+mirrored = false
+
+[sub_resource type="Resource" id=11]
+script = ExtResource( 8 )
+animation = "idle"
+mirrored = true
+
+[sub_resource type="Resource" id=7]
+script = ExtResource( 4 )
+dir_angles = [ SubResource( 1 ), SubResource( 2 ) ]
+directions = [ SubResource( 3 ), SubResource( 4 ) ]
+idles = [ SubResource( 5 ), SubResource( 6 ) ]
+speaks = [ SubResource( 10 ), SubResource( 11 ) ]
+
+[sub_resource type="SpriteFrames" id=8]
+animations = [ {
+"frames": [ ExtResource( 5 ) ],
+"loop": true,
+"name": "idle",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ) ],
+"loop": true,
+"name": "walk",
+"speed": 5.0
+} ]
+
+[sub_resource type="CapsuleShape2D" id=9]
+radius = 36.0
+height = 86.0
+
+[node name="ESCPlayer" type="Area2D"]
+pause_mode = 1
+visible = false
+position = Vector2( 237, 259 )
+script = ExtResource( 2 )
+global_id = "player_invisible"
+is_movable = true
+combine_when_selected_action_is_in = [  ]
+speed = 500
+animations = SubResource( 7 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( -2, -79 )
+frames = SubResource( 8 )
+animation = "idle"
+speed_scale = 1.5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 1, -52 )
+shape = SubResource( 9 )
+
+[node name="ESCDialogLocation" type="Position2D" parent="."]
+position = Vector2( 1, 40 )
+script = ExtResource( 1 )

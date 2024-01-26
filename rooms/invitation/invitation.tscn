@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://addons/escoria-core/game/core-scripts/esc_room.gd" type="Script" id=1]
+[ext_resource path="res://addons/escoria-core/game/core-scripts/esc_location.gd" type="Script" id=2]
+[ext_resource path="res://addons/escoria-core/game/core-scripts/esc_background.gd" type="Script" id=3]
+[ext_resource path="res://rooms/invitation/mail-2.png" type="Texture" id=4]
+[ext_resource path="res://characters/player_invisible/player_invisible.tscn" type="PackedScene" id=5]
+
+[node name="ESCRoom" type="Node2D"]
+script = ExtResource( 1 )
+global_id = "invitation"
+esc_script = "res://rooms/invitation/load.esc"
+player_scene = ExtResource( 5 )
+camera_limits = [ Rect2( 0, 0, 2228, 718 ) ]
+
+[node name="ESCBackground" type="TextureRect" parent="."]
+margin_left = 105.0
+margin_top = 48.0
+margin_right = 1182.0
+margin_bottom = 1125.0
+mouse_filter = 2
+texture = ExtResource( 4 )
+expand = true
+stretch_mode = 5
+script = ExtResource( 3 )
+
+[node name="start" type="Position2D" parent="."]
+position = Vector2( 636, 389 )
+script = ExtResource( 2 )
+global_id = "start_location"
+is_start_location = true

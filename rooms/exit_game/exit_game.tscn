@@ -1,0 +1,56 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://addons/escoria-core/game/core-scripts/esc_room.gd" type="Script" id=1]
+[ext_resource path="res://addons/escoria-core/game/core-scripts/esc_location.gd" type="Script" id=2]
+[ext_resource path="res://addons/escoria-core/game/core-scripts/esc_background.gd" type="Script" id=3]
+[ext_resource path="res://addons/escoria-core/game/core-scripts/esc_terrain.gd" type="Script" id=4]
+[ext_resource path="res://rooms/room_0/method_caller.gd" type="Script" id=5]
+[ext_resource path="res://addons/escoria-core/game/core-scripts/esc_item.gd" type="Script" id=6]
+
+[sub_resource type="GradientTexture" id=1]
+
+[sub_resource type="NavigationPolygon" id=2]
+vertices = PoolVector2Array( 3874, 538, 3928, 535, 3928, 1033, 1234.23, 590.09, 1442.94, 591.592, 1442, 623, 601, 1019, 603.604, 783.784, 909.91, 785.285, 911.411, 534.534, 938.438, 534.534, 939.94, 582.583, 1489.49, 647.147, 1604, 639, 1605.1, 560.06, 1735.74, 558.559, 1947.45, 567.568, 1160.66, 537.538, 1230, 538, 1153.15, 587.087, 3736, 528, 3710.21, 588.589, 2841, 565, 2851, 532, 2902, 535, 2932, 575, 2986, 579, 3009.01, 519.519, 3061.56, 519.519, 3088.59, 552.553, 3540.54, 590.09, 3283.78, 539.039, 3507, 538, 2656.16, 608.108, 2680.18, 570.571, 2345.35, 569.069, 2510.51, 566.066, 2542.04, 605.105, 1752, 538, 1916, 535, 3243.24, 552.553, 2070.57, 566.066, 2180.18, 567.568 )
+polygons = [ PoolIntArray( 0, 1, 2 ), PoolIntArray( 3, 4, 5 ), PoolIntArray( 2, 6, 7, 8 ), PoolIntArray( 8, 9, 10, 11 ), PoolIntArray( 2, 8, 11, 12 ), PoolIntArray( 13, 14, 15, 16 ), PoolIntArray( 17, 18, 3, 19 ), PoolIntArray( 20, 0, 2, 21 ), PoolIntArray( 22, 23, 24, 25 ), PoolIntArray( 26, 27, 28, 29 ), PoolIntArray( 30, 21, 2 ), PoolIntArray( 31, 32, 30 ), PoolIntArray( 33, 34, 22, 25, 2 ), PoolIntArray( 35, 36, 37 ), PoolIntArray( 15, 38, 39, 16 ), PoolIntArray( 31, 30, 2, 40 ), PoolIntArray( 29, 40, 2, 26 ), PoolIntArray( 25, 26, 2 ), PoolIntArray( 19, 3, 5, 12, 11 ), PoolIntArray( 37, 33, 2 ), PoolIntArray( 2, 13, 16, 41, 42, 37 ), PoolIntArray( 42, 35, 37 ), PoolIntArray( 12, 13, 2 ) ]
+outlines = [ PoolVector2Array( 911.411, 534.534, 938.438, 534.534, 939.94, 582.583, 1153.15, 587.087, 1160.66, 537.538, 1230, 538, 1234.23, 590.09, 1442.94, 591.592, 1442, 623, 1489.49, 647.147, 1604, 639, 1605.1, 560.06, 1735.74, 558.559, 1752, 538, 1916, 535, 1947.45, 567.568, 2070.57, 566.066, 2180.18, 567.568, 2345.35, 569.069, 2510.51, 566.066, 2542.04, 605.105, 2656.16, 608.108, 2680.18, 570.571, 2841, 565, 2851, 532, 2902, 535, 2932, 575, 2986, 579, 3009.01, 519.519, 3061.56, 519.519, 3088.59, 552.553, 3243.24, 552.553, 3283.78, 539.039, 3507, 538, 3540.54, 590.09, 3710.21, 588.589, 3736, 528, 3874, 538, 3928, 535, 3928, 1033, 601, 1019, 603.604, 783.784, 909.91, 785.285 ) ]
+
+[node name="ESCRoom" type="Node2D"]
+script = ExtResource( 1 )
+global_id = "exit_game"
+esc_script = "res://rooms/exit_game/load.esc"
+camera_limits = [ Rect2( 0, 0, 2228, 718 ) ]
+
+[node name="ESCBackground" type="TextureRect" parent="."]
+margin_left = -61.0
+margin_top = -37.0
+margin_right = 2237.0
+margin_bottom = 781.0
+mouse_filter = 2
+texture = SubResource( 1 )
+expand = true
+script = ExtResource( 3 )
+
+[node name="method_caller" type="Area2D" parent="."]
+pause_mode = 1
+visible = false
+script = ExtResource( 6 )
+global_id = "method_caller"
+combine_when_selected_action_is_in = [  ]
+animations = null
+
+[node name="Node" type="Node" parent="method_caller"]
+script = ExtResource( 5 )
+
+[node name="start" type="Position2D" parent="."]
+position = Vector2( 407, 557 )
+script = ExtResource( 2 )
+global_id = "start_location"
+is_start_location = true
+
+[node name="ESCTerrain" type="Navigation2D" parent="."]
+script = ExtResource( 4 )
+
+[node name="NavigationPolygonInstance" type="NavigationPolygonInstance" parent="ESCTerrain"]
+position = Vector2( -397, 25 )
+scale = Vector2( 0.666, 0.666 )
+navpoly = SubResource( 2 )

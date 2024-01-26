@@ -1,0 +1,14 @@
+:look
+
+> [!vibrator_visited]
+    say player "Your mom called..."
+    custom method_caller Node decrease_hp ""
+    set_global vibrator_visited true
+    inc_global number_visited 1
+
+> [eq number_visited 8]
+    block_say
+        say player "......."
+        say player "I'm tired... I think I'll go to bed"
+    end_block_say
+    set_active night true

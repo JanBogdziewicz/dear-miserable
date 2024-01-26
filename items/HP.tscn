@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://items/healthbar.png" type="Texture" id=1]
+[ext_resource path="res://items/hp_theme.tres" type="Theme" id=2]
+[ext_resource path="res://items/HP.gd" type="Script" id=3]
+
+[node name="HP" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 3 )
+
+[node name="bar" type="ProgressBar" parent="."]
+margin_right = 515.0
+margin_bottom = 146.0
+theme = ExtResource( 2 )
+max_value = 24.0
+value = 24.0
+percent_visible = false
+
+[node name="filler" type="Polygon2D" parent="."]
+color = Color( 1, 0, 0, 1 )
+polygon = PoolVector2Array( 452, 43, 452, 103, 469, 99, 488, 79, 488, 66, 482, 62, 471, 50, 458, 40 )
+
+[node name="frame" type="TextureRect" parent="."]
+margin_right = 516.0
+margin_bottom = 135.0
+texture = ExtResource( 1 )
+expand = true

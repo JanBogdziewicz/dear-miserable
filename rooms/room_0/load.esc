@@ -1,0 +1,31 @@
+:setup
+set_active mail_window false
+accept_input NONE
+custom method_caller Node set_hp_visible true
+
+:ready
+
+accept_input NONE
+wait 1
+
+block_say
+    say player "Oh..."
+    accept_input SKIP
+    wait 1
+    say player "Wow!"
+    wait 1
+    say player "I got a letter from Academy of Fine Arts!"
+    wait 1
+    say player "*___*"
+    wait 1
+    accept_input NONE
+end_block_say
+
+set_active mail_window true
+custom method_caller Node set_player_visible false
+
+wait 3
+
+accept_input ALL
+
+# change_scene res://rooms/invitation/invitation.tscn

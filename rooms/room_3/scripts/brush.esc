@@ -1,0 +1,14 @@
+:look
+
+> [!brush_visited]
+    say player "Why would you take care of yourself?"
+    custom method_caller Node decrease_hp ""
+    set_global brush_visited true
+    inc_global number_visited 1
+
+> [eq number_visited 8]
+    block_say
+        say player "......."
+        say player "I'm tired... I think I'll go to bed"
+    end_block_say
+    set_active night true

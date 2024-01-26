@@ -1,0 +1,16 @@
+:look
+
+> [lt number_visited 8]
+    say player "Too much to do... Can't sleep right now"
+
+> [eq number_visited 8]
+    custom method_caller Node set_player_visible false
+    set_active night_in_bed true
+
+    block_say
+        say player "Oh great, it’s 3 p.m. you’ve missed your online class! Maybe spend the rest of the day taking shit?! Because every day you spend in this room is worthless!"
+        say player "When you die, the only thing left behind you we’ll be this full trashcan, they will probably bury you with it."
+    end_block_say
+
+    change_scene res://rooms/exit_game/exit_game.tscn
+    
