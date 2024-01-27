@@ -13,6 +13,6 @@
 > [eq number_visited 8]
     block_say
         say player "......."
-        say player "I'm tired... I think I'll go to bed"
+        say player "I'm tired... I think I'll go to bed."
     end_block_say
     set_active night true
