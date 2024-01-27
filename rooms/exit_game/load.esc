@@ -1,7 +1,7 @@
 :setup
-
 custom method_caller Node set_hp_visible false
 set_active game_over false
+stop_snd _music
 
 :ready
 > [eq day 0]

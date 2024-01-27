@@ -1,0 +1,23 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/prysznic_2.wav-3300431a5c2e511b726cb43e9f12ca21.sample"
+
+[deps]
+
+source_file="res://items/SFX/prysznic_2.wav"
+dest_files=[ "res://.import/prysznic_2.wav-3300431a5c2e511b726cb43e9f12ca21.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

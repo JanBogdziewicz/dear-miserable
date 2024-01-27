@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://addons/escoria-core/game/core-scripts/esc_room.gd" type="Script" id=1]
 [ext_resource path="res://addons/escoria-core/game/core-scripts/esc_location.gd" type="Script" id=2]
@@ -10,6 +10,8 @@
 [ext_resource path="res://rooms/room_1/room_night_to.jpg" type="Texture" id=8]
 [ext_resource path="res://rooms/room_1/room_night.jpg" type="Texture" id=9]
 [ext_resource path="res://rooms/room_0/method_caller.gd" type="Script" id=10]
+[ext_resource path="res://items/SFX/lozko.wav" type="AudioStream" id=11]
+[ext_resource path="res://rooms/room_1/sound.gd" type="Script" id=12]
 
 [sub_resource type="NavigationPolygon" id=1]
 vertices = PoolVector2Array( 3874, 538, 3928, 535, 3928, 1033, 1234.23, 590.09, 1442.94, 591.592, 1442, 623, 601, 1019, 603.604, 783.784, 909.91, 785.285, 911.411, 534.534, 938.438, 534.534, 939.94, 582.583, 1489.49, 647.147, 1604, 639, 1605.1, 560.06, 1735.74, 558.559, 1947.45, 567.568, 1160.66, 537.538, 1230, 538, 1153.15, 587.087, 3736, 528, 3710.21, 588.589, 2841, 565, 2851, 532, 2902, 535, 2932, 575, 2986, 579, 3009.01, 519.519, 3061.56, 519.519, 3088.59, 552.553, 3540.54, 590.09, 3283.78, 539.039, 3507, 538, 2656.16, 608.108, 2680.18, 570.571, 2345.35, 569.069, 2510.51, 566.066, 2542.04, 605.105, 1752, 538, 1916, 535, 3243.24, 552.553, 2070.57, 566.066, 2180.18, 567.568 )
@@ -249,3 +251,10 @@ polygon = PoolVector2Array( 439, 245, 609, 245, 610, 495, 441, 495 )
 position = Vector2( 213, 492 )
 script = ExtResource( 2 )
 global_id = "bed_int_position"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="bed"]
+stream = ExtResource( 11 )
+volume_db = -10.587
+script = ExtResource( 12 )
+
+[connection signal="area_entered" from="bed" to="bed/AudioStreamPlayer" method="_on_bed_area_entered"]

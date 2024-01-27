@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://addons/escoria-core/ui_library/menus/main_menu/main_menu.gd" type="Script" id=1]
 [ext_resource path="res://items/FONT.ttf" type="DynamicFontData" id=2]
@@ -8,6 +8,8 @@
 [ext_resource path="res://items/oknostartowe.png" type="Texture" id=6]
 [ext_resource path="res://items/przycisk_2_no_text.png" type="Texture" id=7]
 [ext_resource path="res://items/przycisk_1_no_text.png" type="Texture" id=8]
+[ext_resource path="res://items/SFX/menu_screen_play_button.wav" type="AudioStream" id=9]
+[ext_resource path="res://addons/escoria-core/ui_library/menus/main_menu/sound.gd" type="Script" id=10]
 
 [sub_resource type="DynamicFont" id=1]
 size = 64
@@ -94,4 +96,10 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="main/main/buttons"]
+stream = ExtResource( 9 )
+volume_db = -10.357
+script = ExtResource( 10 )
+
 [connection signal="pressed" from="main/main/buttons/new_game" to="." method="_on_new_game_pressed"]
+[connection signal="pressed" from="main/main/buttons/new_game" to="main/main/buttons/AudioStreamPlayer" method="_on_new_game_pressed"]

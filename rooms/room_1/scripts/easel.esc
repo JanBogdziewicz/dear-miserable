@@ -3,7 +3,7 @@
 > [!easel_visited]
     block_say
         say player "Hey!!! Don’t be shy and paint something. Just make sure it doesn’t resemble any artist too much. That’s called PLAGIARISM."
-        say player "Come on... Yes! Yes! There we go! Now scrap that shit and throw it in a bin really quick, you nonentity."
+        say player "Come on... Yes! Yes! There we go! Now scrap that shit and throw it in a bin really quick, you talentless loser."
     end_block_say
 
     custom method_caller Node decrease_hp ""

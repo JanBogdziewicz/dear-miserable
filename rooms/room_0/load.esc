@@ -4,7 +4,7 @@ accept_input NONE
 custom method_caller Node set_hp_visible true
 
 :ready
-
+play_snd res://items/oliwia_pomysl.wav _music
 accept_input NONE
 wait 1
 

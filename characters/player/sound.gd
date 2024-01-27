@@ -1,0 +1,38 @@
+extends AudioStreamPlayer
+
+
+# Declare member variables here. Examples:
+# var a = 2
+# var b = "text"
+
+var started = false
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+#func _process(delta):
+#	pass
+
+
+func _on_AnimatedSprite_frame_changed():
+	var player = get_parent()
+	if player.is_moving() and not started:
+		started = true
+		self.play()
+	if not player.is_moving() and started:
+		started = false
+		#self.stop()
+
+
+func _on_AudioStreamPlayer_finished():
+	if started:
+		self.play()
+	else:
+		self.stop()
+
+
+func _on_ESCPlayer_arrived(walk_context):
+	started = false
+	self.stop()

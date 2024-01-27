@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://addons/escoria-core/game/core-scripts/resources/esc_animationname.gd" type="Script" id=1]
 [ext_resource path="res://addons/escoria-core/game/core-scripts/resources/esc_directionangle.gd" type="Script" id=2]
@@ -8,6 +8,9 @@
 [ext_resource path="res://characters/player/to2.png" type="Texture" id=6]
 [ext_resource path="res://characters/player/to.png" type="Texture" id=7]
 [ext_resource path="res://addons/escoria-core/game/core-scripts/esc_dialog_location.gd" type="Script" id=8]
+[ext_resource path="res://items/SFX/kroki_podloga.wav" type="AudioStream" id=9]
+[ext_resource path="res://characters/player/sound.gd" type="Script" id=10]
+[ext_resource path="res://characters/player/animation_with_one_shot_sound.gd" type="Script" id=11]
 
 [sub_resource type="Resource" id=1]
 script = ExtResource( 2 )
@@ -88,6 +91,7 @@ position = Vector2( -2, -79 )
 frames = SubResource( 8 )
 animation = "idle"
 speed_scale = 1.5
+script = ExtResource( 11 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 1, -52 )
@@ -96,3 +100,14 @@ shape = SubResource( 9 )
 [node name="ESCDialogLocation" type="Position2D" parent="."]
 position = Vector2( 1, 40 )
 script = ExtResource( 8 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 9 )
+volume_db = -6.851
+mix_target = 2
+bus = "SFX"
+script = ExtResource( 10 )
+
+[connection signal="animation_finished" from="AnimatedSprite" to="AudioStreamPlayer" method="_on_AnimatedSprite_animation_finished"]
+[connection signal="frame_changed" from="AnimatedSprite" to="AudioStreamPlayer" method="_on_AnimatedSprite_frame_changed"]
+[connection signal="finished" from="AudioStreamPlayer" to="AudioStreamPlayer" method="_on_AudioStreamPlayer_finished"]
