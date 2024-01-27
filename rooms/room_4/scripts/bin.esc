@@ -1,11 +1,7 @@
 :look
 
-> [!bin_visited]
-    say player "You have no energy to do that, maybe tomorrow."
-    set_global bin_visited true
-    inc_global number_visited 1
-
-> [eq number_visited 8]
-    say player "......."
-    say player "I'm tired... I think I'll go to bed"
-    set_active night true
+#stop dzwieki
+wait 1
+custom method_caller Node decrease_hp ""
+wait 1
+change_scene res://rooms/exit_game/exit_game.tscn

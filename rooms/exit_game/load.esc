@@ -1,6 +1,7 @@
 :setup
 
 custom method_caller Node set_hp_visible false
+set_active game_over false
 
 :ready
 > [eq day 0]
@@ -22,5 +23,20 @@ custom method_caller Node set_hp_visible false
     # change to room_4
     wait 1
     change_scene res://rooms/room_4/room_4.tscn
+
+> [eq day 4]
+    wait 1
+    block_say
+        say player_invisible "You dumb fat ass, how many of those dark net pills did you take?!"
+        say player_invisible "Don't you know how to properly measure youre dose?!"
+        say player_invisible "Now you're dead and cold. Congratulations!"
+        say player_invisible "You know they will pack you in one of those black bags?"
+        say player_invisible "Just like trash."
+        wait 1
+    end_block_say
+    wait 1
+    set_active game_over true
+    wait 3
+    change_scene res://rooms/credits/credits.tscn
 
 

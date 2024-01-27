@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://addons/escoria-core/game/core-scripts/esc_room.gd" type="Script" id=1]
 [ext_resource path="res://addons/escoria-core/game/core-scripts/esc_location.gd" type="Script" id=2]
@@ -7,9 +7,7 @@
 [ext_resource path="res://rooms/room_0/method_caller.gd" type="Script" id=5]
 [ext_resource path="res://addons/escoria-core/game/core-scripts/esc_item.gd" type="Script" id=6]
 [ext_resource path="res://items/FONT.ttf" type="DynamicFontData" id=7]
-[ext_resource path="res://characters/player_invisible/player_invisible.tscn" type="PackedScene" id=8]
-
-[sub_resource type="GradientTexture" id=1]
+[ext_resource path="res://items/credits.jpg" type="Texture" id=8]
 
 [sub_resource type="NavigationPolygon" id=2]
 vertices = PoolVector2Array( 3874, 538, 3928, 535, 3928, 1033, 1234.23, 590.09, 1442.94, 591.592, 1442, 623, 601, 1019, 603.604, 783.784, 909.91, 785.285, 911.411, 534.534, 938.438, 534.534, 939.94, 582.583, 1489.49, 647.147, 1604, 639, 1605.1, 560.06, 1735.74, 558.559, 1947.45, 567.568, 1160.66, 537.538, 1230, 538, 1153.15, 587.087, 3736, 528, 3710.21, 588.589, 2841, 565, 2851, 532, 2902, 535, 2932, 575, 2986, 579, 3009.01, 519.519, 3061.56, 519.519, 3088.59, 552.553, 3540.54, 590.09, 3283.78, 539.039, 3507, 538, 2656.16, 608.108, 2680.18, 570.571, 2345.35, 569.069, 2510.51, 566.066, 2542.04, 605.105, 1752, 538, 1916, 535, 3243.24, 552.553, 2070.57, 566.066, 2180.18, 567.568 )
@@ -22,18 +20,15 @@ font_data = ExtResource( 7 )
 
 [node name="ESCRoom" type="Node2D"]
 script = ExtResource( 1 )
-global_id = "exit_game"
-esc_script = "res://rooms/exit_game/load.esc"
-player_scene = ExtResource( 8 )
+global_id = "credits"
+esc_script = "res://rooms/credits/load.esc"
 camera_limits = [ Rect2( 0, 0, 2228, 718 ) ]
 
 [node name="ESCBackground" type="TextureRect" parent="."]
-margin_left = -61.0
-margin_top = -37.0
-margin_right = 2237.0
-margin_bottom = 781.0
+margin_right = 1280.0
+margin_bottom = 720.0
 mouse_filter = 2
-texture = SubResource( 1 )
+texture = ExtResource( 8 )
 expand = true
 script = ExtResource( 3 )
 
@@ -65,6 +60,7 @@ navpoly = SubResource( 2 )
 
 [node name="game_over" type="Area2D" parent="."]
 pause_mode = 1
+visible = false
 script = ExtResource( 6 )
 global_id = "game_over"
 combine_when_selected_action_is_in = [  ]

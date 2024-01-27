@@ -2,8 +2,4 @@
 
 > [lt number_visited 8]
     say player "Too much to do... Can't sleep right now"
-
-> [eq number_visited 8]
-    say player "Maybe the academy isn’t for you? You can’t paint, can’t take care of yourself... You can’t even make a breakfast!"
-    change_scene res://rooms/exit_game/exit_game.tscn
     
