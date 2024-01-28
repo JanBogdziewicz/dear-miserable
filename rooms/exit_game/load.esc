@@ -27,10 +27,10 @@ stop_snd _music
 > [eq day 4]
     wait 1
     block_say
-        say player_invisible "You dumb fat ass, how many of those dark net pills did you take?!"
-        say player_invisible "Don't you know how to properly measure youre dose?!"
+        say player_invisible "You dumb fat-ass, how many of those dark web pills did you take?!"
+        say player_invisible "Don't you know how to properly measure the dose?!"
         say player_invisible "Now you're dead and cold. Congratulations!"
-        say player_invisible "You know they will pack you in one of those black bags?"
+        say player_invisible "You know they will pack you in one of those black bags right?"
         say player_invisible "Just like trash."
         wait 1
     end_block_say

@@ -1,4 +1,5 @@
 :look
+play_snd res://items/SFX/wibrator.wav
 
 > [!vibrator_visited]
     say player "You feel ashamed of yourself."

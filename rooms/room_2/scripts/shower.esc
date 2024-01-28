@@ -1,4 +1,5 @@
 :look
+play_snd res://items/SFX/prysznic.wav
 
 > [!shower_visited]
     say player "The water is cold..."

@@ -1,7 +1,9 @@
 :look
 
 > [!fridge_visited]
+    play_snd res://items/SFX/lodowka_open.wav
     say player "What’s even the point in this..."
+    play_snd res://items/SFX/lodowka_close.wav
     custom method_caller Node decrease_hp ""
     set_global fridge_visited true
     inc_global number_visited 1

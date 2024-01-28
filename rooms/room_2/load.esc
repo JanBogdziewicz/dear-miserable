@@ -1,5 +1,6 @@
 :setup
 stop_snd _music
+play_snd res://items/SFX/day_1_2.wav _music
 set_active night false
 set_active night_in_bed false
 custom method_caller Node set_hp_visible true

@@ -1,4 +1,5 @@
 :look
+play_snd res://items/SFX/smieci.wav
 
 > [!bin_visited]
     say player "You should be painting now."

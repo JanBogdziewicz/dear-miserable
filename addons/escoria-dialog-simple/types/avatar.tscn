@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://addons/escoria-dialog-simple/types/avatar.gd" type="Script" id=1]
 [ext_resource path="res://PixeloidSans-mLxMm.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://items/SFX/dialog_alt.wav" type="AudioStream" id=3]
+[ext_resource path="res://addons/escoria-dialog-simple/types/audio.gd" type="Script" id=4]
 
 [sub_resource type="Theme" id=2]
 
@@ -70,3 +72,11 @@ __meta__ = {
 }
 
 [node name="Tween" type="Tween" parent="Panel/MarginContainer/HSplitContainer/text"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Panel/MarginContainer/HSplitContainer/text"]
+stream = ExtResource( 3 )
+volume_db = -8.096
+script = ExtResource( 4 )
+
+[connection signal="tween_completed" from="Panel/MarginContainer/HSplitContainer/text/Tween" to="Panel/MarginContainer/HSplitContainer/text/AudioStreamPlayer" method="_on_Tween_tween_completed"]
+[connection signal="tween_started" from="Panel/MarginContainer/HSplitContainer/text/Tween" to="Panel/MarginContainer/HSplitContainer/text/AudioStreamPlayer" method="_on_Tween_tween_started"]

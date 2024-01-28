@@ -1,4 +1,5 @@
 :look
+play_snd res://items/SFX/komputer.wav
 
 > [!computer_visited]
     say player "No new messages. Nobody thinks of you."

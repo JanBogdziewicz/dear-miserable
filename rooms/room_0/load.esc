@@ -4,7 +4,7 @@ accept_input NONE
 custom method_caller Node set_hp_visible true
 
 :ready
-play_snd res://items/oliwia_pomysl.wav _music
+play_snd res://items/SFX/day_1_2.wav _music
 accept_input NONE
 wait 1
 
@@ -21,6 +21,8 @@ block_say
     accept_input NONE
 end_block_say
 
+play_snd res://items/SFX/mail_open.wav _sound
+play_snd res://items/SFX/mail_tekst.wav _sound
 set_active mail_window true
 custom method_caller Node set_player_visible false
 

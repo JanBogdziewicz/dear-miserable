@@ -1,4 +1,5 @@
 :look
+play_snd res://items/SFX/wibrator.wav
 
 > [!vibrator_visited]
     say player "Don’t you think you’re addicted? Maybe find yourself a partner, you pervert!"

@@ -1,4 +1,5 @@
 :look
+play_snd res://items/SFX/grzebien.wav
 
 > [!brush_visited]
     say player "Why would you take care of yourself?"

@@ -1,6 +1,7 @@
 :look
 
-#stop dzwieki
+stop_snd _music
+accept_input NONE
 wait 1
 custom method_caller Node decrease_hp ""
 wait 1

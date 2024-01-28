@@ -2,6 +2,7 @@
 set_active night false
 set_active night_in_bed false
 custom method_caller Node set_hp_visible true
+play_snd res://items/SFX/day_3.wav _music
 
 :ready
 inc_global day 1
