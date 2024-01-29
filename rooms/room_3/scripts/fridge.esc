@@ -2,15 +2,18 @@
 
 > [!fridge_visited]
     play_snd res://items/SFX/lodowka_open.wav
-    say player "What’s even the point in this..."
+    say player "What’s even the point of this..."
     play_snd res://items/SFX/lodowka_close.wav
     custom method_caller Node decrease_hp ""
     set_global fridge_visited true
     inc_global number_visited 1
 
 > [eq number_visited 8]
+    accept_input NONE
     block_say
+        wait 1
         say player "......."
         say player "I'm tired... I think I'll go to bed."
     end_block_say
+    accept_input ALL
     set_active night true

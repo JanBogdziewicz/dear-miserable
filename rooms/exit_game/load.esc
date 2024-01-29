@@ -25,6 +25,7 @@ stop_snd _music
     change_scene res://rooms/room_4/room_4.tscn
 
 > [eq day 4]
+    accept_input NONE
     wait 1
     block_say
         say player_invisible "You dumb fat-ass, how many of those dark web pills did you take?!"

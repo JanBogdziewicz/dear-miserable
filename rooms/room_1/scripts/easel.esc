@@ -1,18 +1,23 @@
 :look
 
 > [!easel_visited]
+    accept_input NONE
     block_say
         say player "Hey!!! Don’t be shy and paint something. Just make sure it doesn’t resemble any artist too much. That’s called PLAGIARISM."
-        say player "Come on... Yes! Yes! There we go! Now scrap that shit and throw it in a bin really quick, you talentless loser."
+        say player "Come on... Yes! Yes! There we go! Now scrape that shit and throw it in the thrash really quickly, you talentless loser."
     end_block_say
+    accept_input ALL
 
     custom method_caller Node decrease_hp ""
     set_global easel_visited true
     inc_global number_visited 1
 
 > [eq number_visited 8]
+    accept_input NONE
     block_say
+        wait 1
         say player "......."
         say player "I'm tired... I think I'll go to bed."
     end_block_say
+    accept_input ALL
     set_active night true

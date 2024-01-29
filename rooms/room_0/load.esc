@@ -10,7 +10,7 @@ wait 1
 
 block_say
     say player "Oh..."
-    accept_input SKIP
+    accept_input NONE
     wait 1
     say player "Wow!"
     wait 1

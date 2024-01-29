@@ -1,14 +1,17 @@
 :look
 
 > [!bookshelf_visited]
-    say player "You’ve read „On the heights of despair” by Emil Cioran, it didn’t make you feel less lonely."
+    say player "You read „On the heights of despair” by Emil Cioran, it didn’t make you feel less lonely."
     custom method_caller Node decrease_hp ""
     set_global bookshelf_visited true
     inc_global number_visited 1
 
 > [eq number_visited 8]
+    accept_input NONE
     block_say
+        wait 1
         say player "......."
         say player "I'm tired... I think I'll go to bed."
     end_block_say
+    accept_input ALL
     set_active night true

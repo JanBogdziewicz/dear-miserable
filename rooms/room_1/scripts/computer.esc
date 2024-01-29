@@ -2,14 +2,17 @@
 play_snd res://items/SFX/komputer.wav
 
 > [!computer_visited]
-    say player "You scrolled Facebook endlessly."
+    say player "You scrolled through Facebook endlessly."
     custom method_caller Node decrease_hp ""
     set_global computer_visited true
     inc_global number_visited 1
 
 > [eq number_visited 8]
+    accept_input NONE
     block_say
+        wait 1
         say player "......."
         say player "I'm tired... I think I'll go to bed."
     end_block_say
+    accept_input ALL
     set_active night true

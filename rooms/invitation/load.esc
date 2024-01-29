@@ -1,5 +1,7 @@
 :ready
 
+accept_input NONE
+
 block_say 
     say player_invisible "Dear Miserable, We are happy to inform you that from now on you’re a student of our academy! You’re not that special at all, but look at you! You somehow managed..."
     say player_invisible "Due to your depression we agreed on you working from home. But if you won’t paint regularly, we’ll have to expell you from our student list. All of us have problems, but look! We’re doing just fine. Get to work!!!"

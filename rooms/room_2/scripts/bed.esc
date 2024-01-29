@@ -9,11 +9,13 @@ play_snd res://items/SFX/lozko.wav
     custom method_caller Node set_player_visible false
     set_active night_in_bed true
 
+    accept_input NONE
     block_say
-        say player "Well congrats! You didn’t even throw the trash... You should feel ashamed, that’s why you can’t even bring some people over..."
+        say player "Well congrats! You didn’t even throw the trash out... You should feel ashamed of yourself, that’s why you can’t even bring some people over..."
         say player "Maybe you should think about making some project with all this mold, trash and dead bugs from your kitchen?!"
-        say player "What’s even the point in living like this."
+        say player "What’s even the point of living like this."
     end_block_say
+    accept_input ALL
 
     change_scene res://rooms/exit_game/exit_game.tscn
     

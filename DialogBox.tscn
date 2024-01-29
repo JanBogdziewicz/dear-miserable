@@ -1,8 +1,76 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://DialogBox.gd" type="Script" id=1]
 [ext_resource path="res://addons/escoria-core/game/core-scripts/esc_item.gd" type="Script" id=2]
 [ext_resource path="res://PixeloidSans-mLxMm.ttf" type="DynamicFontData" id=3]
+
+[sub_resource type="GDScript" id=2]
+script/source = "extends ColorRect
+
+export var dialogPath = \"\"
+
+export(float) var textSpeed = 0.05
+
+var dialog
+
+var phraseNum = 0
+var finished = false
+
+func _ready():
+	self.visible = true
+	
+func _process(_delta):	
+	$Indicator.visible = finished
+	if Input.is_action_just_pressed(\"ui_accept\"):
+		if finished:
+			nextPhrase()
+		else:
+			$Text.visible_characters = len($Text.text)
+
+func open_dialog(args):
+	dialogPath = args[0]
+	$Timer.wait_time = textSpeed
+	dialog = getDialog()
+	assert(dialog, \"Dialog not found\")
+	nextPhrase()
+
+	
+func getDialog() -> Array:
+	var f = File.new()
+	assert(f.file_exists(dialogPath), \"File path does not exist\")
+	
+	f.open(dialogPath, File.READ)
+	var json = f.get_as_text()
+	
+	var output = parse_json(json)
+	
+	if typeof(output) == TYPE_ARRAY:
+		return output
+	else:
+		return []
+		
+func nextPhrase() -> void:
+	if phraseNum >= len(dialog):
+		queue_free()
+		return
+	
+	finished = false
+	
+	#$Name.bbcode_text = dialog[phraseNum][\"Name\"]
+	$Text.bbcode_text = dialog[phraseNum][\"Text\"]
+	
+	$Text.visible_characters = 0
+	
+	while $Text.visible_characters < len($Text.text):
+		$Text.visible_characters += 1
+		
+		$Timer.start()
+		yield($Timer, \"timeout\")
+		
+	finished = true
+	phraseNum += 1
+	return
+		
+"
 
 [sub_resource type="DynamicFont" id=1]
 size = 32
@@ -12,37 +80,14 @@ font_data = ExtResource( 3 )
 pause_mode = 1
 script = ExtResource( 2 )
 global_id = "custom_dialog"
-esc_script = ""
-is_exit = false
-is_trigger = false
-trigger_in_verb = "trigger_in"
-trigger_out_verb = "trigger_out"
-is_interactive = true
-is_movable = false
-player_orients_on_arrival = true
-interaction_angle = 0
-tooltip_name = ""
-default_action = ""
-default_action_inventory = ""
 combine_when_selected_action_is_in = [  ]
-combine_is_one_way = false
-use_from_inventory_only = false
-inventory_texture = null
-dialog_color = Color( 1, 1, 1, 1 )
-dont_apply_terrain_scaling = false
-speed = 300
-v_speed_damp = 1.0
-animation_player_node = NodePath("")
-camera_node = NodePath("")
-custom_data = {
-}
 animations = null
 
 [node name="DialogBox" type="ColorRect" parent="."]
 margin_right = 739.0
 margin_bottom = 165.0
 color = Color( 0.223529, 0.223529, 0.223529, 1 )
-script = ExtResource( 1 )
+script = SubResource( 2 )
 
 [node name="Text" type="RichTextLabel" parent="DialogBox"]
 margin_left = 21.0

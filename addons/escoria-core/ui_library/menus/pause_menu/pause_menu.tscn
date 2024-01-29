@@ -68,9 +68,9 @@ __meta__ = {
 }
 
 [node name="menuitems" type="VBoxContainer" parent="VBoxContainer"]
-margin_top = 263.0
+margin_top = 264.0
 margin_right = 616.0
-margin_bottom = 455.0
+margin_bottom = 456.0
 custom_constants/separation = 10
 __meta__ = {
 "_edit_use_anchors_": false

@@ -44,6 +44,24 @@ margin_right = 987.0
 margin_bottom = -25.0
 rect_scale = Vector2( 0.52, 0.52 )
 
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/ui"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/ui/HBoxContainer"]
+margin_bottom = 72.0
+mouse_filter = 2
+
+[node name="Spacer" type="Control" parent="CanvasLayer/ui/HBoxContainer"]
+margin_left = 4.0
+margin_right = 1280.0
+margin_bottom = 72.0
+mouse_filter = 2
+size_flags_horizontal = 3
+
 [node name="pause_menu" parent="CanvasLayer" instance=ExtResource( 8 )]
 visible = false
 theme = ExtResource( 9 )

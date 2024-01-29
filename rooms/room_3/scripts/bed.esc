@@ -9,10 +9,12 @@ play_snd res://items/SFX/lozko.wav
     custom method_caller Node set_player_visible false
     set_active night_in_bed true
 
+    accept_input NONE
     block_say
         say player "Oh great, it’s 3 p.m. you’ve missed your online class! Maybe spend the rest of the day taking shit?! Because every day you spend in this room is worthless!"
-        say player "When you die, the only thing left behind you will be this full trashcan. They will probably bury you with it."
+        say player "When you die, the only thing left of you will be this full trashcan. They will probably bury you with it."
     end_block_say
+    accept_input ALL
 
     change_scene res://rooms/exit_game/exit_game.tscn
     

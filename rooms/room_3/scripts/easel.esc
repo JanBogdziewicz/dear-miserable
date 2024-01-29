@@ -1,14 +1,17 @@
 :look
 
 > [!easel_visited]
-    say player "Make me a favor and don’t touch canvas anymore, I don’t want to see you here. I thought I made it clear the first time... Your „art” SUCKS."
+    say player "Do me a favor and don’t touch the canvas anymore, I don’t want to see you here. I thought I made it clear the first time... Your „art” SUCKS."
     custom method_caller Node decrease_hp ""
     set_global easel_visited true
     inc_global number_visited 1
 
 > [eq number_visited 8]
+    accept_input NONE
     block_say
+        wait 1
         say player "......."
         say player "I'm tired... I think I'll go to bed."
     end_block_say
+    accept_input ALL
     set_active night true
